@@ -55,4 +55,20 @@ public class ComidaMapper {
                 .map(this::modelToDto)
                 .collect(Collectors.toSet());
     }
+
+    public ComidaModel patchFormToModel(ComidaForm comidaForm, ComidaModel comidaModel){
+        if (comidaForm.getName()!=null && !comidaForm.getName().isBlank()){
+            comidaModel.setName(comidaForm.getName());
+        }
+        if (comidaForm.getComidaSabor() != null) {
+            comidaModel.setSabor(comidaForm.getComidaSabor());
+        }
+        if (comidaForm.getKcals()!=null && !comidaForm.getKcals().isNaN()){
+        comidaModel.setKcals(comidaForm.getKcals());
+        }
+        if (comidaForm.getDescricaoPreparo()!= null && !comidaForm.getDescricaoPreparo().isBlank()){
+            comidaModel.setDescricaoPreparo(comidaForm.getDescricaoPreparo());
+        }
+        return comidaModel;
+    }
 }
